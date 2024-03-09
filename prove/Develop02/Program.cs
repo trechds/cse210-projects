@@ -32,11 +32,11 @@ class Program
                     string entryText = Console.ReadLine();
 
                     Console.WriteLine("Enter the filename to save the entry:");
-                    string filename = Console.ReadLine();
-                    filename += $" - {DateTime.Now.ToString("dd-MM-yyyy")}.txt"; // Adding the current date after the file's name
+                    string fileName = Console.ReadLine();
+                    fileName += $" - {DateTime.Now.ToString("dd-MM-yyyy")}.txt"; // Adding the current date after the file's name
 
                     journal.AddEntry(new Entry(DateTime.Now.ToString("yyyy-MM-dd"), prompt, entryText));
-                    journal.SaveToFile(filename); // Save the file
+                    journal.SaveToFile(fileName); // Save the file
                     Console.WriteLine("Entry saved successfully!");
                     Console.WriteLine("Press Enter to continue...");
                     Console.ReadLine();

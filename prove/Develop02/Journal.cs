@@ -19,8 +19,8 @@ public class Journal
         }
     }
 
-    public void SaveToFile(string filename){
-        using (StreamWriter writer = new StreamWriter(filename))
+    public void SaveToFile(string fileName){
+        using (StreamWriter writer = new StreamWriter(fileName))
         {
             foreach (var entry in _entries)
             {
@@ -29,9 +29,9 @@ public class Journal
         }
     }
     
-    public void LoadFromFile(string filename){
+    public void LoadFromFile(string fileName){
         _entries.Clear();
-        using (StreamReader reader = new StreamReader(filename))
+        using (StreamReader reader = new StreamReader(fileName))
         {
             string line;
             while ((line = reader.ReadLine()) != null)
