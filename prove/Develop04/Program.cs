@@ -4,8 +4,6 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Mindfulness Program");
-
         BreathingActivity breathingActivity = new BreathingActivity();
         ReflectionActivity reflectionActivity = new ReflectionActivity();
         ListingActivity listingActivity = new ListingActivity();
@@ -13,6 +11,7 @@ class Program
         int choice;
         do
         {
+            Console.WriteLine("Mindfulness Program");
             Console.WriteLine("\nMenu:");
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Reflection Activity");

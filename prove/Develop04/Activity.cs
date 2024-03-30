@@ -14,33 +14,45 @@ public class Activity
 
     public virtual void DisplayStartingMessage()
     {
+        Console.Clear();
         Console.WriteLine($"Starting {_name} Activity...");
+        Thread.Sleep(2000);
         Console.WriteLine(_description);
+        Thread.Sleep(5000);
         Console.WriteLine($"Duration: {_duration} seconds");
-        Console.WriteLine("Prepare to begin...");
-        Thread.Sleep(3000);
+        Console.Write("Prepare to begin... ");
+        ShowSpinner(3);
+        Console.Clear();
     }
 
     public virtual void DisplayEndingMessage()
     {
-        Console.WriteLine("Good job!");
+        Console.WriteLine("\nGood job!");
+        Thread.Sleep(1000);
         Console.WriteLine($"You have completed the {_name} activity for {_duration} seconds.");
         Thread.Sleep(3000);
+        Console.Write("\nGetting back to the main menu... ");
+        ShowSpinner(3);
+        Console.WriteLine("");
+        Console.Clear();
     }
 
     // Display spinner animation
     protected void ShowSpinner(int seconds)
     {
-        for (int i = 0; i < seconds * 10; i++)
+        List<string> spinner = new List<string>() {"|", "/", "-", "\\", "|", "/", "-", "\\"};
+
+        DateTime startTime = DateTime.Now;
+        DateTime endTime  = startTime.AddSeconds(seconds);
+        
+        while (DateTime.Now < endTime)
         {
-            Console.Write("/\b");
-            Thread.Sleep(100);
-            Console.Write("|\b");
-            Thread.Sleep(100);
-            Console.Write("\\\b");
-            Thread.Sleep(100);
-            Console.Write("-\b");
-            Thread.Sleep(100);
+            foreach (string s in spinner)
+            {
+                Console.Write(s);
+                Thread.Sleep(100);
+                Console.Write("\b \b");
+            }
         }
     }
 
@@ -49,17 +61,9 @@ public class Activity
     {
         for (int i = seconds; i >= 0; i--)
         {
-            Console.SetCursorPosition(Console.CursorLeft, Console.CursorTop);
-            Console.Write($"{i} ");
+            Console.Write(i);
             Thread.Sleep(1000);
-            if (Console.CursorLeft - 3 >= 0)
-            {
-                Console.SetCursorPosition(Console.CursorLeft - 3, Console.CursorTop);
-            }
-            else
-            {
-                Console.WriteLine();
-            }
+            Console.Write("\b \b");
         }
         Console.WriteLine();
     }
