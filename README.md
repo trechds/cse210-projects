@@ -1,6 +1,5 @@
 # Repository Name: CSE 210-Projects
 **Thiago Rech - BYU-Idaho - 2024**
-I'm starting learning C#, and it gets me excited.
 
 ## CSE 210 C# Projects
 
