@@ -24,35 +24,35 @@ class Program
                 continue;
             }
 
-            Console.Write("How long, in seconds, would you like for your session? ");
-            int duration;
-            if (!int.TryParse(Console.ReadLine(), out duration))
-            {
-                Console.WriteLine("Invalid input. Please enter a number.");
-                continue;
-            }
-
             switch (choice)
             {
                 case 1:
-                    breathingActivity.Duration = duration;
+                    int breathingDuration = GetSessionDuration();
+                    breathingActivity.Duration = breathingDuration;
                     breathingActivity.Run();
                     break;
                 case 2:
-                    reflectionActivity.Duration = duration;
+                    int reflectionDuration = GetSessionDuration();
+                    reflectionActivity.Duration = reflectionDuration;
                     reflectionActivity.Run();
                     break;
                 case 3:
-                    listingActivity.Duration = duration;
+                    int listingDuration = GetSessionDuration();
+                    listingActivity.Duration = listingDuration;
                     listingActivity.Run();
                     break;
                 case 4:
-                    Console.WriteLine("\nExiting program...");
+                    Console.Write("\nExiting program...");
+                    new Activity().ShowSpinner(3);
                     break;
                 default:
                     Console.WriteLine("\nInvalid choice! Please select a valid option");
                     break;
             }
         } while (choice != 4);
+    }
+    static int GetSessionDuration()
+    {
+        return new Activity().GetSessionDuration();
     }
 }

@@ -12,6 +12,23 @@ public class Activity
         set { _duration = value; }
     }
 
+    public int GetSessionDuration()
+    {
+        int duration;
+        do
+        {
+            Console.Write("How long, in seconds, would you like for your session? ");
+            if (!int.TryParse(Console.ReadLine(), out duration))
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+                continue;
+            }
+            break;
+        } while (true);
+
+        return duration;
+    }
+
     public virtual void DisplayStartingMessage()
     {
         Console.Clear();
@@ -38,7 +55,7 @@ public class Activity
     }
 
     // Display spinner animation
-    protected void ShowSpinner(int seconds)
+    public void ShowSpinner(int seconds)
     {
         List<string> spinner = new List<string>() {"|", "/", "-", "\\", "|", "/", "-", "\\"};
 
