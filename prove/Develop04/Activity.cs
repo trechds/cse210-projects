@@ -32,8 +32,9 @@ public class Activity
     public virtual void DisplayStartingMessage()
     {
         Console.Clear();
-        Console.WriteLine($"Starting {_name} Activity...");
-        Thread.Sleep(2000);
+        Console.Write($"Starting {_name} Activity... ");
+        ShowSpinner(2);
+        Console.WriteLine();
         Console.WriteLine(_description);
         Thread.Sleep(5000);
         Console.WriteLine($"Duration: {_duration} seconds");

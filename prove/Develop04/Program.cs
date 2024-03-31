@@ -7,6 +7,7 @@ class Program
         BreathingActivity breathingActivity = new BreathingActivity();
         ReflectionActivity reflectionActivity = new ReflectionActivity();
         ListingActivity listingActivity = new ListingActivity();
+        StopActivity stopActivity = new StopActivity();
 
         int choice;
         do
@@ -16,7 +17,8 @@ class Program
             Console.WriteLine("1. Breathing Activity");
             Console.WriteLine("2. Reflection Activity");
             Console.WriteLine("3. Listing Activity");
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("4. Stop Activity (BONUS)");
+            Console.WriteLine("5. Exit");
             Console.Write("Enter your choice: ");
             if (!int.TryParse(Console.ReadLine(), out choice))
             {
@@ -42,6 +44,9 @@ class Program
                     listingActivity.Run();
                     break;
                 case 4:
+                    stopActivity.Run();
+                    break;
+                case 5:
                     Console.Write("\nExiting program...");
                     new Activity().ShowSpinner(3);
                     break;
@@ -49,7 +54,7 @@ class Program
                     Console.WriteLine("\nInvalid choice! Please select a valid option");
                     break;
             }
-        } while (choice != 4);
+        } while (choice != 5);
     }
     static int GetSessionDuration()
     {

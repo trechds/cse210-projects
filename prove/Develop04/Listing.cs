@@ -17,7 +17,6 @@ public class ListingActivity : Activity
         "When was the last time you felt a deep sense of gratitude?",
     };
 
-    // Run the listing activity
     public override void DisplayStartingMessage()
     {
         base.DisplayStartingMessage();
