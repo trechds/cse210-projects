@@ -4,6 +4,21 @@ class Program
 {
     static void Main(string[] args)
     {
+        /*
+        Exceeding the Requirements
+
+        I exceeded the requirements of this assignment by creating an extra activity called Stop! Game.
+
+        In this activity, the computer will generate a random letter,then you must write as many words
+        as you canthat begin with that computer-generated letter within 20 seconds for each category.
+
+        I added a validation, so if you try to write a word that doesn't start with the generated letter,
+        it won't be able to count towards your list, so be quick and creative!
+
+        I also added some additional things, for example in Listing Activity, I added a question at the end,
+        to find out if the User would like to see their list.
+        */
+
         BreathingActivity breathingActivity = new BreathingActivity();
         ReflectionActivity reflectionActivity = new ReflectionActivity();
         ListingActivity listingActivity = new ListingActivity();
