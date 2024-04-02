@@ -22,11 +22,19 @@ public class StopActivity : Activity
 
     public override void DisplayStartingMessage()
     {
-        base.DisplayStartingMessage();
+        Console.Clear();
+        Console.Write($"Starting {_name} Activity... ");
+        ShowSpinner(2);
+        Console.WriteLine();
+        Console.WriteLine(_description);
+        Thread.Sleep(5000);
+        Console.Write("Prepare to begin... ");
+        ShowSpinner(3);
+        Console.Clear();
         Console.Clear();
         Console.WriteLine("Welcome to the Stop Game!");
         Thread.Sleep(2000);
-        Console.WriteLine("\nYou have 10 seconds to come up with words for each category starting with the specified letter.");
+        Console.WriteLine("\nYou have 20 seconds to come up with words for each category starting with the specified letter.");
         Thread.Sleep(5000);
         Console.Write("\nLet's begin in... ");
         ShowCountDown(3);
@@ -45,7 +53,7 @@ public class StopActivity : Activity
 
             Thread timerThread = new Thread(() =>
             {
-                Thread.Sleep(10000);
+                Thread.Sleep(20000);
                 NextCategory();
             });
             timerThread.Start();
@@ -137,7 +145,15 @@ public class StopActivity : Activity
 
     public override void DisplayEndingMessage()
     {
+        Console.WriteLine("\nGood job!");
+        Thread.Sleep(1000);
         Console.WriteLine("\nHope you enjoyed playing Stop!");
-        base.DisplayEndingMessage();
+        Thread.Sleep(1000);
+        Console.WriteLine($"You have completed the {_name} activity for 140 seconds.");
+        Thread.Sleep(3000);
+        Console.Write("\nGetting back to the main menu... ");
+        ShowSpinner(3);
+        Console.WriteLine("");
+        Console.Clear();
     }
 }
