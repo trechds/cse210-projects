@@ -4,12 +4,17 @@ using System.Collections.Generic;
 public abstract class Account
 {
     public int AccountNumber { get; private set; }
-    protected double Balance { get; set; }
+    public double Balance { get; set; }
     public Customer Customer { get; set; }
-
     List<double> Transactions = new List<double>();
+    private static int NextAccountNumber = 1001;
 
     // Constructor to initialize an account with a customer
+    public Account()
+    {
+        AccountNumber = NextAccountNumber++; // Atribui o próximo número de conta sequencial
+        Balance = 0; // Inicializa o saldo como zero
+    }
     public Account(Customer customer)
     {
         AccountNumber = GenerateAccountNumber();
@@ -23,6 +28,19 @@ public abstract class Account
         Transactions.Add(amount);
         Balance += amount;
         Console.WriteLine($"Funds in account: {Balance.ToString("0.00")}");
+    }
+
+    public void Deposits(double amount)
+    {
+        if (amount > 0)
+        {
+            Balance += amount; // Adiciona o valor ao saldo da conta
+            Console.WriteLine($"Depósito de {amount:C2} realizado com sucesso.");
+        }
+        else
+        {
+            Console.WriteLine("O valor do depósito deve ser maior que zero.");
+        }
     }
 
     // Public virtual method for withdrawing funds from the account with a withdrawal fee
@@ -45,6 +63,28 @@ public abstract class Account
         }
     }
 
+    public void Withdraws(double amount, double withdrawalFee)
+    {
+        if (amount > 0 && Balance >= amount + withdrawalFee)
+        {
+            Balance -= (amount + withdrawalFee); // Subtrai o valor do saque mais a taxa de retirada do saldo
+            Console.WriteLine($"Saque de {amount:C2} realizado com sucesso. Taxa de saque: {withdrawalFee:C2}");
+        }
+        else if (amount <= 0)
+        {
+            Console.WriteLine("O valor do saque deve ser maior que zero.");
+        }
+        else
+        {
+            Console.WriteLine("Saldo insuficiente para realizar o saque.");
+        }
+    }
+
+    public double GetBalance()
+    {
+        return Balance;
+    }
+
     // Method to display the account statement
     public void Statement()
     {
@@ -58,6 +98,12 @@ public abstract class Account
         {
             Console.WriteLine($"\nAmount to be deposited in the next transaction due to maintenance fee: R$ {Balance.ToString("0.00")}");
         }
+    }
+
+    public void Statements()
+    {
+        Console.WriteLine($"Número da Conta: {AccountNumber}");
+        Console.WriteLine($"Saldo Atual: {Balance:C2}");
     }
 
     // Method to calculate the maintenance fee based on the transaction amount and withdrawal fee percentage

@@ -9,6 +9,7 @@ internal class Menu
         Console.WriteLine("*     Welcome to the T-Rech Bank System!     *");
         Console.WriteLine("*                                            *");
         Console.WriteLine("*********************************************\n");
+        Console.WriteLine("This is a banking application where you can open different types of accounts.\n");
     }
 
     public static string AccountTypeSelection()
