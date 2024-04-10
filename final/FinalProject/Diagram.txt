@@ -1,0 +1,117 @@
+#---------------------------------------------------------------- PROGRAM DIAGRAM ----------------------------------------------------------------#
+
++------------------------------------+
+|              Customer              |
++------------------------------------+
+| - FirstName: string                |                                               |
+| - LastName: string                 |                                               |
+| - Age: int                         |                                               |
+| - Cpf: string                      |                                               |
++------------------------------------+                                               |
+| + RegisterCustomer(): void         |                          +-------------------------------------------+
+| + ViewData(): void                 |                          |                   Menu                    |
++------------------------------------+                          +-------------------------------------------+
+                |                                               | + WelcomeMessage(): void                  |                                                                                                                
+                |                               --------------- | + AccountTypeSelection(): string          |---------------
+                V                                               | + ShowOperations(name: string,            |
++------------------------------------+                          |   type: string, number: int,              |
+|               Account              |                          |   deposit: string, withdraw: string): int |
++------------------------------------+                          +-------------------------------------------+
+| - AccountNumber: int               |                                               |
+| - Balance: double                  |                                               |
+| - Customer: Customer               |                                               |
+| - Transactions: List<double>       |                                               |
++------------------------------------+                                               |
+| + Deposit(amount: double): void    |
+| + Withdraw(amount: double,         |
+|     withdrawalFee: double): void   |
+| + Statement(): void                |
++------------------------------------+
+|                    |
+|--------------------+-----------------------------------------------+--------------------------------------------------+
+|                    |                                               |                                                  |
+|                    |                                               |                                                  |
+|                    V                                               V                                                  V
++------------------------------------------+    +-------------------------------------------+    +----------------------------------------------+
+|               SalaryAccount              |    |               SavingsAccount              |    |               InvestmentAccount              |
++------------------------------------------+    +-------------------------------------------+    +----------------------------------------------+
+| - WithdrawalFeeRate: double              |    | - WithdrawalFeeRate: double               |    | - MaintenanceFeeRate: double                 |
+| - CompanyCnpj: string                    |    +-------------------------------------------+    +----------------------------------------------+
+| - Payslip: Payslip                       |    | + OpenSavingsAccount(): void              |    | + EvaluateInvestorProfile(): void            |
++------------------------------------------+    | + TransferToSavings(amount: double): void |    | + InvestInStocks(initialInvestment: double)  |
+| + Deposit(companyCnpj: string): void     |    | + SavingsOperations(userInput: int): void |    | : void                                       |
+| + SalaryOperations(userInput: int): void |    +-------------------------------------------+    | + InvestmentOperations(userInput: int): void |
++------------------+-----------------------+                                                     +----------------------------------------------+
+|                  |
+|                  |
+|                  V
++------------------------------------+
+|              Payslip               |
++------------------------------------+
+| - CompanyCnpj: string              |
+| - CompanyName: string              |
+| - CompanyAddress: string           |
+| - EmployeePosition: string         |
+| - Salary: double                   |
+| - ClientFirstName: string          |
+| - ClientLastName: string           |
++------------------------------------+
+| + SetupPayslip(): void             |
+| + CompletePayslip(): void          |
++------------------------------------+
+
+#------------------------------------------------------------------ EXPLAINED ------------------------------------------------------------------#
+
+Customer --> Account:
+The Customer class is associated with the Account class through the composition relationship. 
+This means that a customer (Customer) has an account (Account). 
+The Account class stores information about the customer who owns the account.
+
+Account --> SalaryAccount:
+The Account class is associated with the SalaryAccount class through the association relationship. 
+This indicates that an account (Account) can be related to a salary account (SalaryAccount). 
+The SalaryAccount class manages the specific details of a salary account, such as withdrawal rate and payroll (Payslip) information.
+
+Account --> SavingsAccount:
+Similarly, the Account class is associated with the SavingsAccount class through an association relationship. 
+This indicates that an account (Account) can be related to a savings account (SavingsAccount). 
+The SavingsAccount class manages the specific details of a savings account, such as withdrawal rate and savings operations.
+
+Account --> InvestmentAccount:
+Similarly, the Account class is also associated with the InvestmentAccount class through an association relationship. 
+This indicates that an account (Account) can be related to an investment account (InvestmentAccount). 
+The InvestmentAccount class manages the specific details of an investment account, such as maintenance fee and investment operations.
+
+SalaryAccount --> Payslip:
+The SalaryAccount class is associated with the Payslip class through an association relationship. 
+This indicates that a salary account (SalaryAccount) is related to a payroll (Payslip). 
+The Payslip class contains specific details about the payroll associated with the salary account.
+
+Menu class:
+Serves as an essential component of the simulated banking system program,
+facilitating user interaction and menu-driven operations for account management and customer services.
+It embodies principles of user interface design, modularity, and separation of concerns within the overall system architecture.
+It collaborates with other components of the banking system, such as account management (Account class)
+and customer management (Customer class), to provide a cohesive user experience. It acts as an intermediary between user inputs and system operations.
+
+#----------------------------------------------------------------- SIMPLIFIED -----------------------------------------------------------------#
++------------------------------------+
+|              Customer              |
++------------------------------------+
+       |
+       V
++------------------------------------+
+|               Account              |
++------------------------------------+
+       |
++------+----------------+----------------+
+|      |                |                |
+V      V                V                V
++---------------+   +----------------+   +-------------------+
+| SalaryAccount |   | SavingsAccount |   | InvestmentAccount |
++---------------+   +----------------+   +-------------------+
+       |
+       V
++------------------------------------+
+|              Payslip               |
++------------------------------------+

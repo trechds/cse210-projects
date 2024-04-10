@@ -1,0 +1,77 @@
+using System;
+using System.Collections.Generic;
+
+public abstract class Account
+{
+    public int AccountNumber { get; private set; }
+    protected double Balance { get; set; }
+    public Customer Customer { get; set; }
+
+    List<double> Transactions = new List<double>();
+
+    // Constructor to initialize an account with a customer
+    public Account(Customer customer)
+    {
+        AccountNumber = GenerateAccountNumber();
+        Customer = customer;
+        Balance = 0;
+    }
+
+    // Protected virtual method for depositing funds into the account
+    protected virtual void Deposit(double amount)
+    {
+        Transactions.Add(amount);
+        Balance += amount;
+        Console.WriteLine($"Funds in account: {Balance.ToString("0.00")}");
+    }
+
+    // Public virtual method for withdrawing funds from the account with a withdrawal fee
+    public virtual void Withdraw(double amount, double withdrawalFee)
+    {
+        if (Balance >= amount)
+        {
+            double fee = CalculateMaintenanceFee(amount, withdrawalFee);
+            amount *= (-1);
+            Balance += amount;
+            Balance -= fee;
+            Transactions.Add(amount);
+            Transactions.Add(fee * (-1));
+            Console.WriteLine("Transaction successful!");
+            Console.WriteLine($"Funds in account: {Balance.ToString("0.00")}");
+        }
+        else
+        {
+            Console.WriteLine("Insufficient funds in the account!");
+        }
+    }
+
+    // Method to display the account statement
+    public void Statement()
+    {
+        Console.WriteLine("Statement:\n");
+        foreach (var transaction in Transactions)
+        {
+            Console.WriteLine("R$ " + transaction.ToString("0.00"));
+        }
+        Console.WriteLine($"\nTotal funds in account: R$ {Balance.ToString("0.00")}");
+        if (Balance < 0)
+        {
+            Console.WriteLine($"\nAmount to be deposited in the next transaction due to maintenance fee: R$ {Balance.ToString("0.00")}");
+        }
+    }
+
+    // Method to calculate the maintenance fee based on the transaction amount and withdrawal fee percentage
+    public double CalculateMaintenanceFee(double amount, double withdrawalFee)
+    {
+        double fee = withdrawalFee * (amount / 100);
+        return fee;
+    }
+
+    // Method to generate a random account number
+    public int GenerateAccountNumber()
+    {
+        Random random = new Random();
+        int accountNumber = random.Next(100000, 999999);
+        return accountNumber;
+    }
+}

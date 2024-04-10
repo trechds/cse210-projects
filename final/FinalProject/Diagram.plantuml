@@ -1,0 +1,67 @@
+@startuml BankingSystemSimulation
+
+skinparam class {
+    BackgroundColor PaleGreen
+    BorderColor DarkSlateGray
+}
+
+class Customer {
+    - FirstName: string
+    - LastName: string
+    - Age: int
+    - Cpf: string
+    + RegisterCustomer(): void
+    + ViewData(): void
+}
+
+class Account {
+    - AccountNumber: int
+    - Balance: double
+    - Customer: Customer
+    - Transactions: List<double>
+    + Deposit(amount: double): void
+    + Withdraw(amount: double, withdrawalFee: double): void
+    + Statement(): void
+}
+
+class SalaryAccount {
+    - WithdrawalFeeRate: double
+    - CompanyCnpj: string
+    - Payslip: Payslip
+    + Deposit(companyCnpj: string): void
+    + SalaryOperations(userInput: int): void
+}
+
+class SavingsAccount {
+    - WithdrawalFeeRate: double
+    + OpenSavingsAccount(): void
+    + TransferToSavings(amount: double): void
+    + SavingsOperations(userInput: int): void
+}
+
+class InvestmentAccount {
+    - MaintenanceFeeRate: double
+    + EvaluateInvestorProfile(): void
+    + InvestInStocks(initialInvestment: double): void
+    + InvestmentOperations(userInput: int): void
+}
+
+class Payslip {
+    - CompanyCnpj: string
+    - CompanyName: string
+    - CompanyAddress: string
+    - EmployeePosition: string
+    - Salary: double
+    - ClientFirstName: string
+    - ClientLastName: string
+    + SetupPayslip(): void
+    + CompletePayslip(): void
+}
+
+Customer --> Account
+Account --> SalaryAccount
+Account --> SavingsAccount
+Account --> InvestmentAccount
+SalaryAccount --> Payslip
+
+@enduml
