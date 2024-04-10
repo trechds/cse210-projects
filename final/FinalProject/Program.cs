@@ -29,7 +29,7 @@ class Program
                 do
                 {
                     Console.Clear();
-                    userInput = Menu.ShowOperations($"{customer.FirstName} {customer.LastName}", accountTypeInput, accountNumber, "Receive Income", "Withdraw");
+                    userInput = Menu.ShowOperations($"{customer._firstName} {customer._lastName}", accountTypeInput, accountNumber, "Receive Income", "Withdraw");
                     salaryAccount.SalaryOperations(userInput);
 
                 } while (userInput != 9);
@@ -47,7 +47,7 @@ class Program
 
                 do
                 {
-                    userInput = Menu.ShowOperations($"{customer.FirstName} {customer.LastName}", accountTypeInput, accountNumber, "Transfer to Savings", "Withdraw");
+                    userInput = Menu.ShowOperations($"{customer._firstName} {customer._lastName}", accountTypeInput, accountNumber, "Transfer to Savings", "Withdraw");
                     savingsAccount.SavingsOperations(userInput);
 
                 } while (userInput != 9);
@@ -71,7 +71,7 @@ class Program
                 investmentAccount.InvestInStocks(investmentAmount);
                 do
                 {
-                    userInput = Menu.ShowOperations($"{customer.FirstName} {customer.LastName}", accountTypeInput, accountNumber, "Invest in this Account", "Invest in Stocks");
+                    userInput = Menu.ShowOperations($"{customer._firstName} {customer._lastName}", accountTypeInput, accountNumber, "Invest in this Account", "Invest in Stocks");
                     investmentAccount.InvestmentOperations(userInput);
 
                 } while (userInput != 9);

@@ -6,6 +6,7 @@ public class SavingsAccount : Account
     public double WithdrawalFeeRate { get; } = 0.35;
 
     // Constructor
+    
     public SavingsAccount(Customer customer) : base(customer)
     {
         // Constructor for Savings Account, inherits from base Account class
@@ -65,7 +66,7 @@ public class SavingsAccount : Account
                 Console.Clear();
                 Console.WriteLine("To complete the withdrawal, enter the first 3 digits of your CPF");
                 string cpfPrefix = Console.ReadLine();
-                if (Customer.Cpf.StartsWith(cpfPrefix) && cpfPrefix.Length == 3)
+                if (Customer._cpf.StartsWith(cpfPrefix) && cpfPrefix.Length == 3)
                 {
                     double withdrawalAmount;
                     do

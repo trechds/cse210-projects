@@ -9,8 +9,8 @@ public class Payslip
 {
     public Payslip(Customer customer)
     {                                  
-        ClientFirstName = customer.FirstName;
-        ClientLastName = customer.LastName;
+        ClientFirstName = customer._firstName;
+        ClientLastName = customer._lastName;
     }
 
     public string CompanyCnpj { get; private set; }

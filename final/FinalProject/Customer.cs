@@ -4,10 +4,10 @@ using System.IO;
 
 public class Customer
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    private int Age { get; set; }
-    public string Cpf { get; set; }
+    public string _firstName { get; set; }
+    public string _lastName { get; set; }
+    private int _age { get; set; }
+    public string _cpf { get; set; }
     public Account CustomerAccount { get; set; }
 
     // Method to register a new customer
@@ -16,10 +16,10 @@ public class Customer
         Console.WriteLine("\nComplete your registration:\n");
 
         // Validate and set customer's first name
-        FirstName = ValidateStringInput("Enter your first name: ");
-        LastName = ValidateStringInput("Enter your last name: ");
-        Age = ValidateAgeInput();
-        Cpf = ValidateCpfInput();
+        _firstName = ValidateStringInput("Enter your first name: ");
+        _lastName = ValidateStringInput("Enter your last name: ");
+        _age = ValidateAgeInput();
+        _cpf = ValidateCpfInput();
 
         // Create a new account for the customer
         CustomerAccount = new SavingsAccount(this);
@@ -70,7 +70,7 @@ public class Customer
 
         using (StreamWriter writer = new StreamWriter(filePath, append: true))
         {
-            writer.WriteLine($"Name: {FirstName} {LastName}, Age: {Age}, CPF: {Cpf}, Current Balance: {currentBalance:C2}");
+            writer.WriteLine($"Name: {_firstName} {_lastName}, Age: {_age}, CPF: {_cpf}, Current Balance: {currentBalance:C2}");
         }
 
         Console.WriteLine("\nCustomer data saved successfully in CustomerData.txt");
@@ -80,9 +80,9 @@ public class Customer
     public void ViewData()
     {
         Console.WriteLine("******************************************");
-        Console.WriteLine($"Customer's Name: \t {FirstName.ToUpper()} {LastName.ToUpper()}");
-        Console.WriteLine($"Age: \t\t\t {Age}");
-        Console.WriteLine($"CPF: \t\t\t {Cpf}");
+        Console.WriteLine($"Customer's Name: \t {_firstName.ToUpper()} {_lastName.ToUpper()}");
+        Console.WriteLine($"Age: \t\t\t {_age}");
+        Console.WriteLine($"CPF: \t\t\t {_cpf}");
         Console.WriteLine($"Current Balance: \t\t {CustomerAccount.Balance:C2}");
         Console.WriteLine("******************************************");
     }
