@@ -1,0 +1,75 @@
+-------------------------------------------------------------Program Diagram-----------------------------------------------------------
+
+  +----------------------------------+                                                      +----------------------------------+
+  |            Document              |                                                      |              Menu                |
+  +----------------------------------+                                                      +----------------------------------+
+  | _filename : string               |                                                      | _menuOptions : List<string>      |
+  | _splitter : string               |                                                      +----------------------------------+
+  | _emptyLine : string              |                                                      | Menu(menuOptions : List<string>) |
+  | _contents : List<List<string>>   |                                                      | DisplayMenu() : void             |
+  | _transcript : List<List<string>> |                                                      | ChooseMenuOption() : int         |
+  +----------------------------------+---------------------------------+                    +----------------------------------+
+  | Document(filename : string)                                        |
+  | Document(filename : string, splitter : string, emptyLine : string) |
+  | GetContents() : List<List<string>>                                 |
+  | ReadFile() : void                                                  |
+  | SaveFile() : void                                                  |
+  +--------------------------------------------------------------------+
+
+  +----------------------------------+                                                      +----------------------------------+
+  |           GoalManager            |                                                      |              Goal                |
+  +----------------------------------+                                                      +----------------------------------+
+  | _goalsList : List<Goal>          |                                                      | _details : string                |
+  | _filename : string               |                                                      | _points : int                    |
+  +----------------------------------+                                                      | _complete : bool                 |
+  | GoalManager()                    |                                                      +----------------------------------+
+  | GoalManager(filename)            |                                                      | Goal(title, description, points) |
+  | Start() : void                   |                                                      | virtual DisplayGoal() : void     |
+  | DisplayUserInfo() : void         |                                                      | virtual updateGoal() : void      |
+  | DisplayGoalsList() : void        |                                                      | isComplete() : bool              |
+  | CreateGoal() : void              |                                                      +----------------------------------+
+  | updateGoal() : void              |                                                                       ^
+  | SaveGoalsList() : void           |                                                                       |
+  | LoadGoals() : void               |                                                                       |
+  +----------------------------------+                                                                       |
+|                                                                                                            |
+|____________________________________________________________________________________________________________|_______________
+|                       |                                               |                                                   |
+|                       |                                               |                                                   |
+    +---------------------------------------+       +-----------------------------------------+       +-----------------------------------------+
+    |               SimpleGoal              |       |              EternalGoal                |       |              CheklistGoal               |
+    +---------------------------------------+       +-----------------------------------------+       +-----------------------------------------+
+    | isComplete : bool                     |       |                                         |       | _amountCompleted : int                  |
+    +---------------------------------------+       +-----------------------------------------+       | _target :int                            |
+    | SimpleGoal(name, description, points) |       | EternalGoal(title, description, points) |       | _bonus : int                            |
+    |                                       |       |                                         |       +-----------------------------------------+
+    | RecordEvent() : void                  |       | RecordEvent() : void                    |       | ChecklistGoal(name, description, points,|
+    | IsComplete() : bool                   |       | IsComplete() : bool                     |       | target, bonus)                          |
+    | GetStringRepresentation() : string    |       | GetStringRepresentation() : string      |       |                                         |
+    +---------------------------------------+       +-----------------------------------------+       | RecordEvent() : void                    |                                     |
+|                                                                                                     | IsComplete() : bool                     |
+|                                                                                                     | GetDetailsString() : string             |
+|                                                                                                     | GetStringRepresentation() : string      |
+|                                                                                                     +-----------------------------------------+
+    
+-------------------------------------------------------------------------------------------------------------------------------------------------    
+    
++----------------------------------+                                                                     +----------------------------------+
+|              User                |                                                                     |         ChecklistGoal            |
++----------------------------------+                                                                     +----------------------------------+
+| _username : string               |                                                                     | _target : int                    |
+| _score : int                     |                                                                     | _current : int                   |
+| _level : int                     |                                                                     | _bonus : int                     |
+| _rank : string                   |                                                                     +----------------------------------+
+| _rankList : List<string>         |                                                                     | ChecklistGoal(title, description,|
+| _levelUpThreshold : int          |                                                                     | points, target, bonus)           |
+| _rankUpThreshold : int           |                                                                     | override DisplayGoal() : void    |
++----------------------------------+                                                                     | override updateGoal() : void     |
+| User()                           |                                                                     +----------------------------------+
+| User(username)                   |
+| DisplayUserInfo() : void         |
+| IncreaseScore() : void           |
+| LevelUp() : void                 |
++----------------------------------+
+
+-------------------------------------------------------------Program Diagram-----------------------------------------------------------

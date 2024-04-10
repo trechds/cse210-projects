@@ -1,0 +1,7 @@
+User -> Thiago Rech -> 10 -> 210 -> 3 -> 0
+Simple -> Talk in the Sacrament Meeting -> Prepare a talk based on the last General Conference. -> 50 -> True
+Eternal -> Attend the Temple -> Go to the Temple and make at least one ordinance. -> 50
+Checklist -> Work -> Accomplish daily tasks at work. -> 10 -> True -> 5 -> 5 -> 20
+Simple -> Talk in the Sacrament Meeting -> Prepare a talk based on the last General Conference. -> 50 -> False
+Eternal -> Attend the Temple -> Go to the Temple and make at least one ordinance. -> 50
+Checklist -> Work -> Accomplish daily tasks at work. -> 10 -> False -> 0 -> 5 -> 20
